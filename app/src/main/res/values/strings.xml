@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AndroidLab4</string>
+    <string name="phone_number">Номер телефона:</string>
+    <string name="get_num">Тел. книга</string>
+    <string name="save_num">Сохр. номер</string>
+    <string name="text_sms">Текст сообщения:</string>
+    <string name="send_sms">Отправить</string>
+    <string name="top_10_sms">Последние 10 SMS</string>
+    <string name="template_sms">Шаблоны SMS</string>
+    <string name="input_sms">Введите сообщение</string>
+    <string name="text_template_sms">Текст шаблонного сообщения</string>
+    <string name="add_template_sms">Добавить</string>
+    <string name="send_message">Отправить SMS</string>
+    <string name="send_email">Отправить EMail</string>
+
+    <string name="choose_img">Выбрать картинку</string>
+    <string name="input_email_adress">Введите EMail</string>
+    <string name="input_subject">Введите тему сообщения</string>
+</resources>
