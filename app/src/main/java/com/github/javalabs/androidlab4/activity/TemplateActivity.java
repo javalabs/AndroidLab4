@@ -1,7 +1,6 @@
 package com.github.javalabs.androidlab4.activity;
 
 import android.content.Intent;
-import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,7 +36,7 @@ public class TemplateActivity extends AppCompatActivity {
         i.putExtra("Test", e.getText().toString());
         setResult(RESULT_OK, i);
         Toast.makeText(this, "onBack", Toast.LENGTH_SHORT).show();
-        finishActivity(SmsActivity.TEMPLATE_RESULT_CODE);
+        finishActivity(SmsActivity.REQUEST_TEMPLATE_ACTIVITY);
         super.onBackPressed();
     }
 }

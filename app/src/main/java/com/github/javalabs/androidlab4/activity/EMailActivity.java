@@ -24,6 +24,11 @@ public class EMailActivity extends AppCompatActivity {
             }
             case R.id.buttonChooseImg: {
                 Toast.makeText(this, "Выбрать картинку", Toast.LENGTH_SHORT).show();
+
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
+
                 break;
             }
             case R.id.buttonSendEmail: {
@@ -31,7 +36,7 @@ public class EMailActivity extends AppCompatActivity {
                 break;
             }
             case R.id.buttonSendSms: {
-                Toast.makeText(this, "Отправить смс", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Отправить смс", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, SmsActivity.class);
                 startActivity(intent);
                 break;
