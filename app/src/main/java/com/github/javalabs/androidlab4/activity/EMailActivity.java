@@ -1,7 +1,6 @@
 package com.github.javalabs.androidlab4.activity;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -15,14 +14,13 @@ import android.widget.Toast;
 
 import com.github.javalabs.androidlab4.R;
 
-import java.net.URI;
-
 public class EMailActivity extends AppCompatActivity {
     public static final int REQUEST_SELECT_CONTACT = 0x0001;
     public static final int REQUEST_SELECT_IMAGE = 0x0002;
     public static final int REQUEST_SEND_MAIL = 0x0003;
+
     private String attachment;
-    private Boolean isMedia = false;
+    private Boolean isMediaChoose = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +52,7 @@ public class EMailActivity extends AppCompatActivity {
             }
             case R.id.buttonSendEmail: {
                 //Toast.makeText(this, "Отправка Email", Toast.LENGTH_SHORT).show();
-                if(!isMedia)
+                if(!isMediaChoose)
                     attachment = String.format("android.resource://%s/%d",
                         // "com.github.javalabs.androidlab4",
                         this.getPackageName(),
@@ -108,7 +106,7 @@ public class EMailActivity extends AppCompatActivity {
             case REQUEST_SELECT_IMAGE: {
                 String d = data.getData().toString();
                 //new AlertDialog.Builder(this).setMessage(d).show();
-                isMedia = true;
+                isMediaChoose = true;
                 attachment = d;
                 break;
             }

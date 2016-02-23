@@ -2,6 +2,7 @@ package com.github.javalabs.androidlab4.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.github.javalabs.androidlab4.R;
+import com.github.javalabs.androidlab4.db.DatabaseHelper;
 
 public class SmsActivity extends AppCompatActivity {
     public static final int REQUEST_TEMPLATE_ACTIVITY = 0x0001;
@@ -20,6 +22,7 @@ public class SmsActivity extends AppCompatActivity {
     public static final int REQUEST_SAVE_CONTACT = 0x0003;
     public static final int REQUEST_TOP_ACTIVITY = 0x0004;
 
+    public static final String TEMPLATE_MESSAGE = "template_message";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +94,10 @@ public class SmsActivity extends AppCompatActivity {
         Toast.makeText(this, "onActivityResult", Toast.LENGTH_SHORT).show();
         switch (requestCode) {
             case REQUEST_TEMPLATE_ACTIVITY: {
-                new AlertDialog.Builder(this).setMessage(data.getStringExtra("Test")).show();
+                //new AlertDialog.Builder(this).setMessage(data.getStringExtra(TEMPLATE_MESSAGE)).show();
+                String temp = data.getStringExtra(TEMPLATE_MESSAGE);
+                EditText message = (EditText)findViewById(R.id.editTextSmsText);
+                message.setText(temp);
                 break;
             }
             case REQUEST_SELECT_CONTACT: {
