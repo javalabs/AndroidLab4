@@ -18,6 +18,7 @@ public class SmsActivity extends AppCompatActivity {
     public static final int REQUEST_TEMPLATE_ACTIVITY = 0x0001;
     public static final int REQUEST_SELECT_CONTACT = 0x0002;
     public static final int REQUEST_SAVE_CONTACT = 0x0003;
+    public static final int REQUEST_TOP_ACTIVITY = 0x0004;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,6 @@ public class SmsActivity extends AppCompatActivity {
         switch(v.getId()) {
             case R.id.buttonPhoneBook: {
                 //Toast.makeText(this, "Тел книга", Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
                 if (intent.resolveActivity(getPackageManager()) != null) {
@@ -54,21 +54,14 @@ public class SmsActivity extends AppCompatActivity {
                 break;
             }
             case R.id.buttonSendSms: {
-                Toast.makeText(this, "Отправка СМС", Toast.LENGTH_SHORT).show();
-                EditText phone = (EditText)findViewById(R.id.editTextPhoneNum);
-                EditText message = (EditText)findViewById(R.id.editTextSmsText);
-                final String m = message.getText().toString();
-                final String p = phone.getText().toString();
-                final SmsManager sm = SmsManager.getDefault();
-                sm.sendTextMessage(p, null, m, null, null);
-                /*
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        sm.sendTextMessage(p, null, m, null, null);
-                    }
-                }).start();
-                */
+                //Toast.makeText(this, "Отправка СМС", Toast.LENGTH_SHORT).show();
+                EditText phoneNumber = (EditText)findViewById(R.id.editTextPhoneNum);
+                EditText messageSms = (EditText)findViewById(R.id.editTextSmsText);
+                String message = messageSms.getText().toString();
+                String phone = phoneNumber.getText().toString();
+                SmsManager sm = SmsManager.getDefault();
+                sm.sendTextMessage(phone, null, message, null, null);
+
                 break;
             }
             case R.id.buttonTop10: {
@@ -134,9 +127,9 @@ public class SmsActivity extends AppCompatActivity {
         Cursor cursorPhone = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                 new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER},
 
-                ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ? AND " +
-                        ContactsContract.CommonDataKinds.Phone.TYPE + " = " +
-                        ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE,
+                ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",// AND " +
+                        //ContactsContract.CommonDataKinds.Phone.TYPE + " = " +
+                        //ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE,
 
                 new String[]{contactID},
                 null);

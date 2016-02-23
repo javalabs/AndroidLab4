@@ -73,16 +73,6 @@
                 android:layout_alignParentStart="true"
                 android:onClick="onClickBtn" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NameImg"
-                android:id="@+id/textViewNameImg"
-                android:layout_alignBaseline="@+id/buttonChooseImg"
-                android:layout_alignBottom="@+id/buttonChooseImg"
-                android:layout_alignLeft="@+id/buttonPhoneBook"
-                android:layout_alignStart="@+id/buttonPhoneBook" />
-
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
