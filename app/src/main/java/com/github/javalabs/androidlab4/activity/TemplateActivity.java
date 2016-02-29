@@ -102,7 +102,7 @@ public class TemplateActivity extends AppCompatActivity {
         Cursor cursor = mSqLiteDatabase.query(mDatabaseHelper.DATABASE_TABLE_TEMPLATE, new String[] {
                         DatabaseHelper.MESSAGE_COLUMN},
                 null, null,
-                null, null, null) ;
+                null, null, null);
 
         if (cursor.moveToFirst()){
             String message = null;

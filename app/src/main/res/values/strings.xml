@@ -16,4 +16,8 @@
     <string name="choose_img">Выбрать картинку</string>
     <string name="input_email_adress">Введите EMail</string>
     <string name="input_subject">Введите тему сообщения</string>
+    <string name="title_activity_latest">LatestSmsActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 </resources>

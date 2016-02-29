@@ -1,5 +1,6 @@
 package com.github.javalabs.androidlab4.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -65,10 +66,28 @@ public class SmsActivity extends AppCompatActivity {
                 SmsManager sm = SmsManager.getDefault();
                 sm.sendTextMessage(phone, null, message, null, null);
 
+                final ContentValues newValues = new ContentValues();
+                newValues.put(DatabaseHelper.PHONE_COLUMN, phone);
+                newValues.put(DatabaseHelper.TEXT_COLUMN, message);
+
+                new Thread(new Runnable() {
+                    DatabaseHelper mDatabaseHelper = new DatabaseHelper(SmsActivity.this, "lab4.db", null, 1);
+                    SQLiteDatabase mSqLiteDatabase = mDatabaseHelper.getWritableDatabase();
+                    @Override
+                    public void run() {
+                        mSqLiteDatabase.insert(DatabaseHelper.DATABASE_TABLE_TOP, null, newValues);
+                        mSqLiteDatabase.close();
+                    }
+                }).start();
+
                 break;
             }
             case R.id.buttonTop10: {
                 Toast.makeText(this, "Последние 10 смс", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(this, LatestActivity.class);
+                startActivity(intent);
+
                 break;
             }
             case R.id.buttonTemplate: {
